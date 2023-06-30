@@ -6,7 +6,7 @@
           flat
           dense
           round
-          icon="menu"
+          :icon="mdiMenu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
@@ -48,48 +48,58 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import {
+  mdiMenu,
+  mdiSchool,
+  mdiCog,
+  mdiChat,
+  mdiRecord,
+  mdiRss,
+  mdiAccount,
+  mdiStar
+} from '@quasar/extras/mdi-v7'
 
 const linksList = [
   {
     title: 'Docs',
     caption: 'quasar.dev',
-    icon: 'school',
+    icon: mdiSchool,
     link: 'https://quasar.dev'
   },
   {
     title: 'Github',
     caption: 'github.com/quasarframework',
-    icon: 'code',
+    icon: mdiCog,
     link: 'https://github.com/quasarframework'
   },
   {
     title: 'Discord Chat Channel',
     caption: 'chat.quasar.dev',
-    icon: 'chat',
+    icon: mdiChat,
     link: 'https://chat.quasar.dev'
   },
   {
     title: 'Forum',
     caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
+    icon: mdiRecord,
     link: 'https://forum.quasar.dev'
   },
   {
     title: 'Twitter',
     caption: '@quasarframework',
-    icon: 'rss_feed',
+    icon: mdiRss,
     link: 'https://twitter.quasar.dev'
   },
   {
     title: 'Facebook',
     caption: '@QuasarFramework',
-    icon: 'public',
+    icon: mdiAccount,
     link: 'https://facebook.quasar.dev'
   },
   {
     title: 'Quasar Awesome',
     caption: 'Community Quasar projects',
-    icon: 'favorite',
+    icon: mdiStar,
     link: 'https://awesome.quasar.dev'
   }
 ]
@@ -100,13 +110,12 @@ export default defineComponent({
   components: {
     EssentialLink
   },
-
   setup () {
     const leftDrawerOpen = ref(false)
-
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
+      mdiMenu,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
