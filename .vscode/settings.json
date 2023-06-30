@@ -11,5 +11,8 @@
     "javascriptreact",
     "typescript",
     "vue"
-  ]
+  ],
+  "[shellscript]": {
+    "editor.defaultFormatter": "1nVitr0.blocksort"
+  }
 }
