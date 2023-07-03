@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import type { QDialog } from 'quasar';
-import type { Ref } from 'vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({

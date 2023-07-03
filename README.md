@@ -9,7 +9,7 @@ yarn
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev
+yarn dev
 ```
 
 
@@ -22,7 +22,12 @@ yarn lint
 
 ### Build the app for production
 ```bash
-quasar build
+yarn build
+```
+
+To run any quasar commands you must use this method
+```bash
+yarn dlx @quasar/cli upgrade
 ```
 
 ### Customize the configuration
