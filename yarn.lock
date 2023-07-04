@@ -6659,6 +6659,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.35.1":
+  version: 1.35.1
+  resolution: "playwright-core@npm:1.35.1"
+  bin:
+    playwright-core: cli.js
+  checksum: 179abc0051f00474e528935b507fa8cedc986b2803b020d7679878ba28cdd7036ad5a779792aad2ad281f8dc625eb1d2fb77663cb8de0d20c7ffbda7c18febdd
+  languageName: node
+  linkType: hard
+
+"playwright-webkit@npm:^1.35.1":
+  version: 1.35.1
+  resolution: "playwright-webkit@npm:1.35.1"
+  dependencies:
+    playwright-core: 1.35.1
+  bin:
+    playwright: cli.js
+  checksum: 629b5e2688f4fa5f87a8c05c6467ab9e534eedbbb373b021b3a4b85a1c49b6a3750482a5072a04cc7c279362d8c6a9d41bc496e899b86d7337aafe11b0f0f07b
+  languageName: node
+  linkType: hard
+
 "postcss-selector-parser@npm:^6.0.9":
   version: 6.0.13
   resolution: "postcss-selector-parser@npm:6.0.13"
@@ -8755,6 +8775,7 @@ __metadata:
     eslint-plugin-vue: ^9.0.0
     happy-dom: ^9.20.3
     pinia: ^2.0.11
+    playwright-webkit: ^1.35.1
     postcss: ^8.4.14
     quasar: ^2.12.2
     sass: 1.32.12

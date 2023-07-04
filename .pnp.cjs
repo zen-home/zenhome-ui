@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:9.15.1"],\
             ["happy-dom", "npm:9.20.3"],\
             ["pinia", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:2.1.4"],\
+            ["playwright-webkit", "npm:1.35.1"],\
             ["postcss", "npm:8.4.24"],\
             ["quasar", "npm:2.12.2"],\
             ["sass", "npm:1.32.12"],\
@@ -7854,6 +7855,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["playwright-core", [\
+        ["npm:1.35.1", {\
+          "packageLocation": "./.yarn/unplugged/playwright-core-npm-1.35.1-69a99ef963/node_modules/playwright-core/",\
+          "packageDependencies": [\
+            ["playwright-core", "npm:1.35.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["playwright-webkit", [\
+        ["npm:1.35.1", {\
+          "packageLocation": "./.yarn/unplugged/playwright-webkit-npm-1.35.1-bb03c15f19/node_modules/playwright-webkit/",\
+          "packageDependencies": [\
+            ["playwright-webkit", "npm:1.35.1"],\
+            ["playwright-core", "npm:1.35.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["postcss", [\
         ["npm:8.4.24", {\
           "packageLocation": "./.yarn/cache/postcss-npm-8.4.24-07c10836e5-814e2126da.zip/node_modules/postcss/",\
@@ -10278,6 +10298,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:9.15.1"],\
             ["happy-dom", "npm:9.20.3"],\
             ["pinia", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:2.1.4"],\
+            ["playwright-webkit", "npm:1.35.1"],\
             ["postcss", "npm:8.4.24"],\
             ["quasar", "npm:2.12.2"],\
             ["sass", "npm:1.32.12"],\

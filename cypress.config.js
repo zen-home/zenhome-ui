@@ -7,9 +7,22 @@ module.exports = defineConfig({
   screenshotsFolder: 'test/cypress/screenshots',
   videosFolder: 'test/cypress/videos',
   video: true,
+  experimentalWebKitSupport: true,
   e2e: {
     setupNodeEvents(on, config) {
       registerCodeCoverageTasks(on, config);
+      config.browsers = [
+        ...config.browsers,
+        // {
+        //   name: 'webkit',
+        //   channel: 'stable',
+        //   family: 'webkit',
+        //   displayName: 'Webkit',
+        //   version: '16.5.1',
+        //   path: '/Applications/Safari.app/Contents/MacOS/SafariForWebKitDevelopment',
+        //   majorVersion: 16
+        // }
+      ]
       return config;
     },
     baseUrl: 'http://localhost:2340/',
