@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          {{  $t('nav.title') }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -28,7 +28,7 @@
         <q-item-label
           header
         >
-          Essential Links
+          {{ $t('nav.essentialLinks') }}
         </q-item-label>
 
         <EssentialLink
@@ -103,7 +103,6 @@ const linksList = [
     link: 'https://awesome.quasar.dev'
   }
 ]
-
 export default defineComponent({
   name: 'MainLayout',
 
@@ -112,6 +111,7 @@ export default defineComponent({
   },
   setup () {
     const leftDrawerOpen = ref(false)
+
     return {
       essentialLinks: linksList,
       leftDrawerOpen,

@@ -30,5 +30,8 @@ To run any quasar commands you must use this method
 yarn dlx @quasar/cli upgrade
 ```
 
+### ssl
+use chrome to export cert and then import it in to key chain access and set it to always trust
+
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).

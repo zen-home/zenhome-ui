@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@quasar/quasar-app-extension-testing-e2e-cypress", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:5.1.0"],\
             ["@quasar/quasar-app-extension-testing-unit-vitest", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.3.0"],\
             ["@quasar/vite-plugin", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.4.1"],\
+            ["@vitejs/plugin-basic-ssl", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.0.1"],\
             ["@vitejs/plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:4.2.3"],\
             ["@vitest/coverage-istanbul", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.32.2"],\
             ["@vitest/coverage-v8", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.32.2"],\
@@ -1641,6 +1642,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/yauzl", "npm:2.10.0"],\
             ["@types/node", "npm:20.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vitejs/plugin-basic-ssl", [\
+        ["npm:1.0.1", {\
+          "packageLocation": "./.yarn/cache/@vitejs-plugin-basic-ssl-npm-1.0.1-54d353eb6f-9060dd9b02.zip/node_modules/@vitejs/plugin-basic-ssl/",\
+          "packageDependencies": [\
+            ["@vitejs/plugin-basic-ssl", "npm:1.0.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.0.1", {\
+          "packageLocation": "./.yarn/__virtual__/@vitejs-plugin-basic-ssl-virtual-b25a4faf29/0/cache/@vitejs-plugin-basic-ssl-npm-1.0.1-54d353eb6f-9060dd9b02.zip/node_modules/@vitejs/plugin-basic-ssl/",\
+          "packageDependencies": [\
+            ["@vitejs/plugin-basic-ssl", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.0.1"],\
+            ["@types/vite", null],\
+            ["vite", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:4.3.9"]\
+          ],\
+          "packagePeers": [\
+            "@types/vite",\
+            "vite"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10278,6 +10301,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@quasar/quasar-app-extension-testing-e2e-cypress", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:5.1.0"],\
             ["@quasar/quasar-app-extension-testing-unit-vitest", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.3.0"],\
             ["@quasar/vite-plugin", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.4.1"],\
+            ["@vitejs/plugin-basic-ssl", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:1.0.1"],\
             ["@vitejs/plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:4.2.3"],\
             ["@vitest/coverage-istanbul", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.32.2"],\
             ["@vitest/coverage-v8", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:0.32.2"],\

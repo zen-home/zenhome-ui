@@ -1221,6 +1221,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitejs/plugin-basic-ssl@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@vitejs/plugin-basic-ssl@npm:1.0.1"
+  peerDependencies:
+    vite: ^3.0.0 || ^4.0.0
+  checksum: 9060dd9b02b51f48f9e655d920214879157db5b8bea9681465ab199e1be4f207cc968393410f93935a0443f8c2b302cef2a3ac0a69087af68fb33a8795e1e203
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-vue@npm:^2.2.0":
   version: 2.3.4
   resolution: "@vitejs/plugin-vue@npm:2.3.4"
@@ -8755,6 +8764,7 @@ __metadata:
     "@quasar/quasar-app-extension-testing-e2e-cypress": ^5.1.0
     "@quasar/quasar-app-extension-testing-unit-vitest": ^0.3.0
     "@quasar/vite-plugin": ^1.4.1
+    "@vitejs/plugin-basic-ssl": ^1.0.1
     "@vitejs/plugin-vue": ^4.2.3
     "@vitest/coverage-istanbul": ^0.32.2
     "@vitest/coverage-v8": ^0.32.2

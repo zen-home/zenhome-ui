@@ -5,6 +5,7 @@
  * the ES6 features that are supported by your Node version. https://node.green/
  */
 const istanbul = require('vite-plugin-istanbul')
+const basicSsl = require('@vitejs/plugin-basic-ssl')
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
@@ -61,7 +62,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node16'
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -81,24 +82,14 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        istanbul({ requireEnv: false })
-        // ['@intlify/vite-plugin-vue-i18n', {
-        //   // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
-        //   // compositionOnly: false,
-
-        //   // if you want to use named tokens in your Vue I18n messages, such as 'Hello {name}',
-        //   // you need to set `runtimeOnly: false`
-        //   // runtimeOnly: false,
-
-        //   // you need to set i18n resource including paths !
-        //   include: path.resolve(__dirname, './src/i18n/**')
-        // }]
+        istanbul({ requireEnv: false }),
+        basicSsl()
       ]
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      // https: true,
+      https: true,
       port: 2340,
       open: false
     },
