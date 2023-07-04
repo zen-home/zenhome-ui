@@ -2,6 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 RED='\033[0;31m'
+GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -10,4 +11,9 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
+echo "${GREEN}Running lint${NC}"
+yarn lint
+echo "${GREEN}Running unit tests${NC}"
 yarn test:unit:ci
+echo "${GREEN}Running e2e tests${NC}"
+yarn build

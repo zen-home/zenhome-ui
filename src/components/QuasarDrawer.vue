@@ -18,16 +18,16 @@
 </template>
 
 <script>
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'QuasarDrawer',
-  setup() {
-    const showDrawer = ref(true);
+  setup () {
+    const showDrawer = ref(true)
 
     return {
-      showDrawer,
-    };
-  },
-});
+      showDrawer
+    }
+  }
+})
 </script>

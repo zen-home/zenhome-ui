@@ -25,7 +25,10 @@ module.exports = defineConfig({
       ]
       return config;
     },
-    baseUrl: 'http://localhost:2340/',
+    baseUrl: 'https://localhost:2340/',
+    hosts: {
+      'my-secure-site': "127.0.0.1"
+    },
     supportFile: 'test/cypress/support/e2e.js',
     specPattern: 'test/cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },

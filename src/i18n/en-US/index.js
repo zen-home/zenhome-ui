@@ -6,6 +6,6 @@ export default {
   success: 'Action was successful',
   nav: {
     title: 'Zen Home App',
-    essentialLinks: 'Essential Links',
+    essentialLinks: 'Essential Links'
   }
 }

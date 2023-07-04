@@ -1,22 +1,22 @@
-import { Dark } from 'quasar';
-import QuasarDark from '../QuasarDark.vue';
+import { Dark } from 'quasar'
+import QuasarDark from '../QuasarDark.vue'
 
 describe('QuasarDark', () => {
   it('changes its color', () => {
-    cy.mount(QuasarDark);
+    cy.mount(QuasarDark)
 
     cy.dataCy('dark-card')
       .should('not.have.class', 'q-dark')
       .then(() => {
-        Dark.set(true);
-      });
+        Dark.set(true)
+      })
 
     cy.dataCy('dark-card')
       .should('have.class', 'q-dark')
       .then(() => {
-        Cypress.vueWrapper.vm.$q.dark.set(false);
-      });
+        Cypress.vueWrapper.vm.$q.dark.set(false)
+      })
 
-    cy.dataCy('dark-card').should('not.have.class', 'q-dark');
-  });
-});
+    cy.dataCy('dark-card').should('not.have.class', 'q-dark')
+  })
+})
