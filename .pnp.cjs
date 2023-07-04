@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-promise", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:6.1.1"],\
             ["eslint-plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:9.15.1"],\
             ["happy-dom", "npm:9.20.3"],\
+            ["husky", "npm:8.0.3"],\
             ["pinia", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:2.1.4"],\
             ["playwright-webkit", "npm:1.35.1"],\
             ["postcss", "npm:8.4.24"],\
@@ -5817,6 +5818,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["husky", [\
+        ["npm:8.0.3", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.3-b0b59c5127-837bc7e441.zip/node_modules/husky/",\
+          "packageDependencies": [\
+            ["husky", "npm:8.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["iconv-lite", [\
         ["npm:0.4.24", {\
           "packageLocation": "./.yarn/cache/iconv-lite-npm-0.4.24-c5c4ac6695-bd9f120f5a.zip/node_modules/iconv-lite/",\
@@ -10321,6 +10331,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-promise", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:6.1.1"],\
             ["eslint-plugin-vue", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:9.15.1"],\
             ["happy-dom", "npm:9.20.3"],\
+            ["husky", "npm:8.0.3"],\
             ["pinia", "virtual:85a1e9a43ff75dbd8edee71ce3d9fe50a27c24a93f083d3217edadc210af795b225eba5cd7d860180ba40eadbda32be26966486c53144b04e935cd56c9558578#npm:2.1.4"],\
             ["playwright-webkit", "npm:1.35.1"],\
             ["postcss", "npm:8.4.24"],\
