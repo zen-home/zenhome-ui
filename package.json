@@ -1,6 +1,6 @@
 {
   "name": "zenhome",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "the web and mobile app for zenhome",
   "productName": "Zen Home | A home for all your home needs",
   "author": "James harrington <jamesdonaldharrington@gmail.com>",
@@ -19,7 +19,8 @@
     "test:webkit": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 DEBUG=cypress:launcher start-test start-test-servers http-get://localhost:2339 \"cypress run\"",
     "test:component": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress open --component",
     "test:component:ci": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress run --component",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "./scripts/release.sh"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",

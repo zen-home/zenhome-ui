@@ -6,9 +6,30 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
+
 if [ "$branch" = "main" ]; then
   echo "${RED}You can't commit directly to main branch${NC}"
   exit 1
+fi
+if [ "$branch" = "dev" ]; then
+  echo "${RED}You can't commit directly to dev branch. Please create a feature, bug or hotfix branch then make a PR${NC}"
+  exit 1
+fi
+
+valid_branch_regex='^((fix|feature)\/[a-zA-Z0-9\-]+)$'
+message="There is something wrong with your branch name. Branch names in this project must adhere to this contract: $valid_branch_regex. Your commit will be rejected. You should rename your branch to a valid name and try again."
+
+if [[ ! $branch =~ $valid_branch_regex ]]; then
+    echo "$message"
+    exit 1
+fi
+
+# Check if this is a versioning commit
+if git log -1 --pretty=%B | grep -q "version"; then
+  if [ "$branch" != "main" ]; then
+    echo "${RED}You can't create a new version outside the main branch${NC}"
+    exit 1
+  fi
 fi
 
 echo "${GREEN}Running lint${NC}"
