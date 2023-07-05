@@ -20,7 +20,7 @@
     "test:component": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress open --component",
     "test:component:ci": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress run --component",
     "prepare": "husky install",
-    "release": "standard-version"
+    "release": "./scripts/release.sh"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",

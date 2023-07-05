@@ -1,22 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-echo "Enter the version type you want to publish (major, minor, patch):"
-read versionType
+# Get the current Git branch
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-# validate versionType
-if [ "$versionType" != "major" ] && [ "$versionType" != "minor" ] && [ "$versionType" != "patch" ]; then
-  echo "Invalid version type. Must be 'major', 'minor', or 'patch'."
-  exit 1
+# Check if the current branch starts with "release/"
+if [[ $current_branch != release/* ]]; then
+    echo "Releases can only be made from a release branch. Please switch to a release branch and try again."
+    exit 1
 fi
 
-# Optional: add more questions here as needed for your workflow
-
-# Check current branch
-branch="$(git rev-parse --abbrev-ref HEAD)"
-if [ "$branch" != "main" ]; then
-  echo "You can't create a new version outside the main branch"
-  exit 1
-fi
-
-# Create a new version
-yarn version $versionType
+# Run standard-version
+yarn standard-version
