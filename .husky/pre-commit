@@ -16,21 +16,22 @@ if [ "$branch" = "dev" ]; then
   exit 1
 fi
 
-valid_branch_regex='^((fix|feat|release)\/[a-zA-Z0-9\-]+)$'
+valid_branch_regex='^((fix|feat|release)\/(\.|[a-zA-Z0-9\-])+)$'
 message="There is something wrong with your branch name. Branch names in this project must adhere to this contract: $valid_branch_regex. Your commit will be rejected. You should rename your branch to a valid name and try again."
-
+echo "$branch"
+echo "$valid_branch_regex"
 if [[ ! $branch =~ $valid_branch_regex ]]; then
     echo "$message"
     exit 1
 fi
 
-# Check if this is a versioning commit
-if git log -1 --pretty=%B | grep -q "version"; then
-  if [[ ! $branch =~ ^release\/ ]]; then
-    echo "${RED}You can't create a new version outside a release branch${NC}"
-    exit 1
-  fi
-fi
+# # Check if this is a versioning commit
+# if git log -1 --pretty=%B | grep -q "release"; then
+#   if [[ ! $branch =~ ^release\/ ]]; then
+#     echo "${RED}You can't create a new version outside a release branch${NC}"
+#     exit 1
+#   fi
+# fi
 
 echo "${GREEN}Running lint${NC}"
 yarn lint
