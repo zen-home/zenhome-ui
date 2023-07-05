@@ -11,13 +11,12 @@ version=$(echo "$output" | grep -o 'bumping version in package.json from [0-9.]*
 
 # Create and switch to the new release branch
 release_branch="release/$version"
-git checkout -b "$release_branch"
+git checkout "$release_branch" 2>/dev/null || git checkout -b "$release_branch"
+echo "Switched to new branch '$release_branch'"
+echo "Running tests and build"
 
 # Run the actual standard-version to update files and make a commit
 yarn standard-version
 
 # Push the new release branch
 # git push --set-upstream origin "$release_branch"
-
-echo "Switched to new branch '$release_branch' and made a release commit"
-echo "Run 'git push --follow-tags origin $release_branch' to publish the release"
