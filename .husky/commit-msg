@@ -1,0 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Temporarily turn off exit on error
+set +e
+
+# Run commitlint
+npx --no-install commitlint --verbose --edit "$1"
+
+# Check the exit status of the last command (commitlint)
+if [ $? -ne 0 ]; then
+  echo "Your commit message does not follow the Conventional Commits guidelines. Please check https://www.conventionalcommits.org for more details."
+  exit 1
+fi
+
+# Reset exit on error behavior
+set -e
