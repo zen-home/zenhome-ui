@@ -24,12 +24,14 @@
       show-if-above
       bordered
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          {{ $t('nav.essentialLinks') }}
-        </q-item-label>
+      <q-list tag="ul">
+        <q-item>
+          <q-item-label
+            header
+          >
+            {{ $t('nav.essentialLinks') }}
+          </q-item-label>
+        </q-item>
 
         <EssentialLink
           v-for="link in essentialLinks"

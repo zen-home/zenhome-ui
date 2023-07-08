@@ -1,10 +1,10 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="link"
-  >
+  <q-item tag="li" clickable>
+    <a
+      target="_blank"
+      :href="link"
+      class="row text-white"
+    >
     <q-item-section
       v-if="icon"
       avatar
@@ -16,6 +16,7 @@
       <q-item-label>{{ title }}</q-item-label>
       <q-item-label caption>{{ caption }}</q-item-label>
     </q-item-section>
+    </a>
   </q-item>
 </template>
 
