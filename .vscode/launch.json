@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "zenhome",
+      "url": "https://localhost:2340", // default vite server port, adjust if needed
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}
