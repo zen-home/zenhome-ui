@@ -3848,6 +3848,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:0.21.4":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
+  dependencies:
+    follow-redirects: ^1.14.0
+  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
+  languageName: node
+  linkType: hard
+
 "axios@npm:^0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
@@ -5600,6 +5609,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:4.3.2":
+  version: 4.3.2
+  resolution: "debug@npm:4.3.2"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 820ea160e267e23c953c9ed87e7ad93494d8cda2f7349af5e7e3bb236d23707ee3022f477d5a7d2ee86ef2bf7d60aa9ab22d1f58080d7deb9dccd073585e1e43
+  languageName: node
+  linkType: hard
+
 "debug@npm:^3.1.0, debug@npm:^3.2.7":
   version: 3.2.7
   resolution: "debug@npm:3.2.7"
@@ -7253,7 +7274,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.9":
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.9":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -9422,6 +9443,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"localtunnel@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "localtunnel@npm:2.0.2"
+  dependencies:
+    axios: 0.21.4
+    debug: 4.3.2
+    openurl: 1.1.1
+    yargs: 17.1.1
+  bin:
+    lt: bin/lt.js
+  checksum: 181452d945a915d68c5c6e6ff5c7375f970dcbbe39d854ac8533c893bd133a3f5afd358ecd63ac84947319073a75e880552441c88380cb14446a67018209f0f1
+  languageName: node
+  linkType: hard
+
 "locate-path@npm:^2.0.0":
   version: 2.0.0
   resolution: "locate-path@npm:2.0.0"
@@ -10697,6 +10732,13 @@ __metadata:
     is-docker: ^2.1.1
     is-wsl: ^2.2.0
   checksum: 6388bfff21b40cb9bd8f913f9130d107f2ed4724ea81a8fd29798ee322b361ca31fa2cdfb491a5c31e43a3996cfe9566741238c7a741ada8d7af1cb78d85cf26
+  languageName: node
+  linkType: hard
+
+"openurl@npm:1.1.1":
+  version: 1.1.1
+  resolution: "openurl@npm:1.1.1"
+  checksum: c90f2f065bc5950f1402aff67a3ce4b5fb0e4475cb07b5ff84247686f7436fbc5bc2d0e38bda4ebc9cf8aea866788424e07f25a68f7e97502d412527964351a9
   languageName: node
   linkType: hard
 
@@ -14611,6 +14653,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"yargs@npm:17.1.1":
+  version: 17.1.1
+  resolution: "yargs@npm:17.1.1"
+  dependencies:
+    cliui: ^7.0.2
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.0
+    y18n: ^5.0.5
+    yargs-parser: ^20.2.2
+  checksum: b05a9467937172e01a4af7a7ad4361a22ee510cd12d1d5a3ad3b4c2e57eb8c35ca94ee22e4bdfbb40fe693fbf8000771e41824f77f6b224f1496c57f20f192b6
+  languageName: node
+  linkType: hard
+
 "yargs@npm:17.7.1":
   version: 17.7.1
   resolution: "yargs@npm:17.7.1"
@@ -14746,6 +14803,7 @@ __metadata:
     eslint-plugin-vue: ^9.0.0
     happy-dom: ^9.20.3
     husky: ^8.0.0
+    localtunnel: ^2.0.2
     pinia: ^2.0.11
     playwright-webkit: ^1.35.1
     postcss: ^8.4.14

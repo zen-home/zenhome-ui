@@ -20,6 +20,7 @@
     "test:component": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress open --component",
     "test:component:ci": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress run --component",
     "lhci": "lhci autorun",
+    "lt": "lt --port 2340 --local-https --allow-invalid-cert",
     "serve": "quasar serve dist/spa",
     "prepare": "husky install",
     "release": "./scripts/release.sh"
@@ -68,6 +69,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "happy-dom": "^9.20.3",
     "husky": "^8.0.0",
+    "localtunnel": "^2.0.2",
     "playwright-webkit": "^1.35.1",
     "postcss": "^8.4.14",
     "sass": "1.32.12",
