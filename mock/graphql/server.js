@@ -175,3 +175,38 @@ server.start().then(() => {
     console.log(`🎭️ 🚀 Mock Server ready at http://localhost:8000${server.graphqlPath}`)
   );
 });
+
+// example
+
+/**
+
+fetch('/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    query: `
+      query Users {
+        users {
+          name
+          id
+          posts {
+            id
+            comments {
+              body
+              date
+              id
+              posts_id
+            }
+            title
+            users_id
+            views
+          }
+        }
+      }
+    `
+  })
+})
+  .then(response => response.json())
+  .then(json => console.log(json))
+
+*/
