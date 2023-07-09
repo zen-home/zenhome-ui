@@ -14,5 +14,19 @@
   ],
   "[shellscript]": {
     "editor.defaultFormatter": "1nVitr0.blocksort"
-  }
+  },
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "javascript.suggest.completeJSDocs": true,
+  "javascript.validate.enable": true,
+  "javascript.suggest.jsdoc.generateReturns": true,
+  "typescript.suggest.jsdoc.generateReturns": true,
+  "typescript.suggest.completeJSDocs": true,
+  "editor.suggest.showWords": true,
+  "editor.autoClosingBrackets": "languageDefined",
+  "[javascript]": {
+    "editor.autoClosingBrackets": "languageDefined"
+  },
+  "[typescript]": {
+    "editor.autoClosingBrackets": "languageDefined"
+  },
 }
