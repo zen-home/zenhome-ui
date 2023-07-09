@@ -101,7 +101,14 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       https: true,
       port: 2340,
-      open: false
+      open: false,
+      proxy: {
+        '/graphql': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          pathRewrite: { '^/graphql': '/' }
+        }
+      }
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
