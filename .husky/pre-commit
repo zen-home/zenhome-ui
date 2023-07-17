@@ -40,4 +40,4 @@ yarn test:unit:ci
 echo "${GREEN}Running e2e tests${NC}"
 yarn build
 echo "${GREEN}Running lighthouse preformance and a11y test${NC}"
-yarn lhci
+yarn lighthouse

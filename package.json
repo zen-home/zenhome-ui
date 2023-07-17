@@ -19,13 +19,14 @@
     "test:e2e": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 start-test start-test-servers http-get://localhost:2339 \"cypress open --e2e\"",
     "test:e2e:ci": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 start-test start-test-servers http-get://localhost:2339 \"cypress run --e2e\"",
     "test:webkit": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 DEBUG=cypress:launcher start-test start-test-servers http-get://localhost:2339 \"cypress run\"",
-    "test:component": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress open --component",
-    "test:component:ci": "cross-env NODE_ENV=test START_SERVER_AND_TEST_INSECURE=1 cypress run --component",
-    "lhci": "lhci autorun",
-    "lt": "lt --port 2340 --local-https --allow-invalid-cert",
+    "test:component": "cross-env 'DEBUG=cypress:*' cypress open --component",
+    "test:component:ci": "cross-env cypress run --component",
+    "lighthouse": "lhci autorun",
+    "localtunnel": "lt --port 2340 --local-https --allow-invalid-cert",
     "serve": "quasar serve dist/spa",
     "prepare": "husky install",
-    "release": "./scripts/release.sh"
+    "release": "./scripts/release.sh",
+    "static-code-analysis": "./sonar.sh"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -77,6 +78,7 @@
     "happy-dom": "^9.20.3",
     "http-proxy": "^1.18.1",
     "husky": "^8.0.0",
+    "jest-sonar-reporter": "^2.0.0",
     "localtunnel": "^2.0.2",
     "nodemon": "^3.0.0",
     "playwright-webkit": "^1.35.1",
@@ -99,5 +101,12 @@
     "node": "^18 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
+  },
+  "jest": {
+    "testResultsProcessor": "jest-sonar-reporter",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ]
   }
 }

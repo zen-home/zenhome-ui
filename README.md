@@ -33,5 +33,12 @@ yarn dlx @quasar/cli upgrade
 ### ssl
 use chrome to export cert and then import it in to key chain access and set it to always trust
 
+### SonarQube
+make sure you have docker installed. then run the following command
+```bash
+  yarn static-code-analysis
+```
+then go to http://localhost:9000/ and login with admin/admin
+
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).

@@ -25,7 +25,7 @@ module.exports = defineConfig({
       ]
       return config;
     },
-    baseUrl: 'https://localhost:2340/',
+    baseUrl: 'http://localhost:2340/',
     hosts: {
       'my-secure-site': "127.0.0.1"
     },
