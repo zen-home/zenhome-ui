@@ -4,7 +4,7 @@
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 # Run standard-version in dry-run mode to get the new version
-output=$(yarn standard-version --dry-run)
+output=$(npx standard-version --dry-run)
 
 # Parse the new version from the output
 version=$(echo "$output" | grep -o 'bumping version in package.json from [0-9.]* to [0-9.]*' | awk '{print $8}')
@@ -16,7 +16,7 @@ echo "Switched to new branch '$release_branch'"
 echo "Running tests and build"
 
 # Run the actual standard-version to update files and make a commit
-yarn standard-version
+npx standard-version
 
 # Push the new release branch
 # git push --set-upstream origin "$release_branch"

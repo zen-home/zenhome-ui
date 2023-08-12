@@ -4,18 +4,18 @@ the web and mobile app for zenhome
 
 ## Install the dependencies
 ```bash
-yarn
+npm i
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-yarn dev
+npm dev
 ```
 
 
 ### Lint the files
 ```bash
-yarn lint
+npm lint
 ```
 
 
@@ -27,7 +27,7 @@ yarn build
 
 To run any quasar commands you must use this method
 ```bash
-yarn dlx @quasar/cli upgrade
+npx @quasar/cli upgrade
 ```
 
 ### ssl

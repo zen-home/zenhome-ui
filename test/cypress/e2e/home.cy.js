@@ -7,12 +7,12 @@
 // This test will pass when run against a clean Quasar project
 describe('Landing', () => {
   beforeEach(() => {
-    cy.visit('/');
-  });
+    cy.visit('/')
+  })
   it('.should() - assert that <title> is correct', () => {
-    cy.title().should('include', 'Zen Home');
-  });
-});
+    cy.title().should('include', 'Zen Home')
+  })
+})
 
 // ** The following code is an example to show you how to write some tests for your home page **
 //

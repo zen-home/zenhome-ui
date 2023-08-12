@@ -4,8 +4,8 @@
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
  */
-const istanbul = require('vite-plugin-istanbul')
-const basicSsl = require('@vitejs/plugin-basic-ssl')
+// const istanbul = require('vite-plugin-istanbul')
+const mkcert = require('vite-plugin-mkcert').default
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
@@ -82,8 +82,8 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        istanbul({ requireEnv: false }),
-        basicSsl(),
+        // istanbul({ requireEnv: false }),
+        ...(process.env.COMPONENT_TEST ? [] : [mkcert()]),
         [
           require('@intlify/unplugin-vue-i18n').default,
           {
@@ -91,15 +91,15 @@ module.exports = configure(function (/* ctx */) {
             // compositionOnly: false,
 
             // you need to set i18n resource including paths !
-            include: path.resolve(__dirname, './src/i18n/**'),
-          },
+            include: path.resolve(__dirname, './src/i18n/**')
+          }
         ]
       ]
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      https: true,
+      https: !process.env.COMPONENT_TEST,
       port: 2340,
       open: false,
       proxy: {

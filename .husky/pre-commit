@@ -34,10 +34,10 @@ fi
 # fi
 
 echo "${GREEN}Running lint${NC}"
-yarn lint
+npm run lint
 echo "${GREEN}Running unit tests${NC}"
-yarn test:unit:ci
+npm run test:unit:ci
 echo "${GREEN}Running e2e tests${NC}"
-yarn build
+npm run build
 echo "${GREEN}Running lighthouse preformance and a11y test${NC}"
-yarn lhci
+npm run lhci
