@@ -4,14 +4,13 @@
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
  */
-// const istanbul = require('vite-plugin-istanbul')
-const mkcert = require('vite-plugin-mkcert').default
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers')
 const path = require('path')
+const testEnv = process.env.NODE_ENV === 'test'
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -71,7 +70,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        NODE_ENV: process.env.NODE_ENV
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -82,10 +83,8 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        // istanbul({ requireEnv: false }),
-        ...(process.env.COMPONENT_TEST ? [] : [mkcert()]),
         [
-          require('@intlify/unplugin-vue-i18n').default,
+          '@intlify/vite-plugin-vue-i18n',
           {
             // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
             // compositionOnly: false,
@@ -99,13 +98,14 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      https: !process.env.COMPONENT_TEST,
+      https: !testEnv,
       port: 2340,
       open: false,
       proxy: {
         '/graphql': {
-          target: 'http://localhost:8000',
+          target: 'https://localhost:8000',
           changeOrigin: true,
+          secure: false,
           pathRewrite: { '^/graphql': '/' }
         }
       }

@@ -1,44 +1,34 @@
-# a home for all your home needs (zenhome)
-
-the web and mobile app for zenhome
-
-## Install the dependencies
+# Installation
+###  Install the dependencies
 ```bash
-npm i
+npm  i
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Install quasar with
 ```bash
-npm dev
+npm i -g @quasar/cli
 ```
 
-
-### Lint the files
+# Commands
+###  Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-npm lint
+npm  dev
 ```
 
+###  SonarQube
 
-
-### Build the app for production
-```bash
-yarn build
-```
-
-To run any quasar commands you must use this method
-```bash
-npx @quasar/cli upgrade
-```
-
-### ssl
-use chrome to export cert and then import it in to key chain access and set it to always trust
-
-### SonarQube
 make sure you have docker installed. then run the following command
-```bash
-  yarn static-code-analysis
-```
-then go to http://localhost:9000/ and login with admin/admin
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+```bash
+npm run start-sonar
+# WAIT FOR SONAR TO START
+# If its your first time starting sonar make sure to got to http://localhost:2348/
+# to set up your sonar project and login.
+# Use admin/admin to login the first time
+# Set up the project with the following settings
+# Project name:  dev
+# local repository
+# once you set up a token make sure to clone sonar-project.properties.example (remove the .example)
+# and replace the sonar.token with the key you just created
+npm  run  static-code-analysis
+```

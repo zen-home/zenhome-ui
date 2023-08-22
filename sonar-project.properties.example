@@ -1,0 +1,19 @@
+# must be unique in a given SonarQube instance
+sonar.projectKey=dev
+sonar.token=sqp_daf2d84fa8dbaa312c3a49959010e245f0e87122
+
+sonar.coverage.exclusions=**/coverage/**, **/cypress/**, **/dist/**, **/mock/**, **/scripts/**, **/*.config.js, **/*.cjs, **/*.json, **/__tests__/**, **/*.example.*, **/*.spec.*, **/*.test.*
+
+# --- optional properties ---
+
+# defaults to project key
+#sonar.projectName=My project
+# defaults to 'not provided'
+#sonar.projectVersion=1.0
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+
+# Path is relative to the sonar-project.properties file. Defaults to .
+#sonar.sources=.
+
+# Encoding of the source code. Default is default system encoding
+#sonar.sourceEncoding=UTF-8

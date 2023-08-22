@@ -1,9 +1,14 @@
+const https = require('https')
+const fs = require('fs')
 const express = require('express')
-const { ApolloServer } = require('apollo-server-express')
+const { ApolloServer, gql } = require('apollo-server-express')
 const { schemaComposer } = require('graphql-compose')
 const httpProxy = require('http-proxy')
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
+
+const key = fs.readFileSync('./key.pem')
+const cert = fs.readFileSync('./cert.pem')
 
 // Import the database
 const db = require('./db')
@@ -150,29 +155,38 @@ const server = new ApolloServer({
 
 const app = express()
 
-// Start the server before applying middleware
-server.start().then(() => {
-  server.applyMiddleware({ app })
+const startServer = () => {
+  // Start the server before applying middleware
+  server.start().then(() => {
+    server.applyMiddleware({ app })
 
-  app.use((req, res, next) => {
-    if (req.method === 'POST') {
-      // If the request is a POST request, parse it to get the GraphQL query or mutation
-      let body = ''
-      req.on('data', (chunk) => {
-        body += chunk.toString()
-      })
-      req.on('end', () => {
-        handlePostRequest(req, res, body)
-      })
-    } else {
-      next()
-    }
+    app.use((req, res, next) => {
+      if (req.method === 'POST') {
+        // If the request is a POST request, parse it to get the GraphQL query or mutation
+        let body = ''
+        req.on('data', (chunk) => {
+          body += chunk.toString()
+        })
+        req.on('end', () => {
+          handlePostRequest(req, res, body)
+        })
+      } else {
+        next()
+      }
+    })
+
+    https.createServer({ key, cert }, app).listen({ port: 8000 }, () =>
+      console.log(`🎭️ 🚀 Mock Server ready at https://localhost:8000${server.graphqlPath}`)
+    )
   })
+}
 
-  app.listen({ port: 8000 }, () =>
-    console.log(`🎭️ 🚀 Mock Server ready at http://localhost:8000${server.graphqlPath}`)
-  )
-})
+if (!module.parent) {
+  console.log('Starting server')
+  startServer()
+}
+
+module.exports = { server, handlePostRequest, startServer, app }
 
 // example
 

@@ -29,4 +29,18 @@
   "[typescript]": {
     "editor.autoClosingBrackets": "languageDefined"
   },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "http://localhost:2348",
+    "projectKey": "zenhome"
+  },
+  "files.exclude": {
+    "node_modules/robots-parser/**/node_modules": true,
+    "node_modules/robots-parser/**/coverage": true,
+    "node_modules/robots-parser/**/.nyc_output": true,
+    "node_modules/robots-parser/**/.vscode": true,
+    ".husky/_/**/*": true
+  },
+  "[dockercompose]": {
+    "editor.defaultFormatter": "1nVitr0.blocksort"
+  },
 }

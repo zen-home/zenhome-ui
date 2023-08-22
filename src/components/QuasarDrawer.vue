@@ -15,9 +15,13 @@
       <q-btn data-cy="button">Am I on screen?</q-btn>
     </q-scroll-area>
   </q-drawer>
+  <div class="fixed-top-right z-max" v-if="env.NODE_ENV === 'test'" >
+    <button @click="showDrawer = !showDrawer" data-cy="toggle-drawer-button">Toggle Drawer (Test Only)</button>
+  </div>
 </template>
 
 <script>
+import { env } from 'src/utils/env'
 import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
@@ -26,8 +30,10 @@ export default defineComponent({
     const showDrawer = ref(true)
 
     return {
+      env,
       showDrawer
     }
   }
 })
+
 </script>

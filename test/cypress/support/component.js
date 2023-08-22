@@ -29,6 +29,8 @@ import '@quasar/extras/material-icons/material-icons.css'
 import { installQuasarPlugin } from '@quasar/quasar-app-extension-testing-e2e-cypress'
 import { Dialog } from 'quasar'
 
+import { env } from 'src/utils/env'
+
 // Since Cypress v10 we cannot import `config` directly from VTU as Cypress bundles its own version of it
 // See https://github.com/cypress-io/cypress/issues/22611
 import { VueTestUtils } from 'cypress/vue'
@@ -47,5 +49,9 @@ config.global.mocks = {
 // Overwrite the transition and transition-group stubs which are stubbed by test-utils by default.
 // We do want transitions to show when doing visual testing :)
 config.global.stubs = {}
+
+beforeEach(() => {
+  cy.stub(env, 'NODE_ENV').value('test')
+})
 
 installQuasarPlugin({ plugins: { Dialog } })

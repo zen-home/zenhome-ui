@@ -1,28 +1,21 @@
 import QuasarCheckComponents from '../QuasarCheckComponents.vue'
 
-describe('QuasarCheckbox', () => {
-  it('can be used with normal Cypress commands', () => {
-    cy.mount(QuasarCheckComponents)
+const testComponent = (description, selector) => {
+  describe(description, () => {
+    it('can be used with normal Cypress commands', () => {
+      cy.mount(QuasarCheckComponents)
 
-    cy.dataCy('checkbox').check()
-    cy.dataCy('checkbox').should('be.checked')
+      cy.dataCy(selector).check()
+      cy.dataCy(selector).should('be.checked')
 
-    cy.dataCy('checkbox').uncheck()
-    cy.dataCy('checkbox').should('not.be.checked')
+      cy.dataCy(selector).uncheck()
+      cy.dataCy(selector).should('not.be.checked')
+    })
   })
-})
+}
 
-describe('QuasarToggle', () => {
-  it('can be used with normal Cypress commands', () => {
-    cy.mount(QuasarCheckComponents)
-
-    cy.dataCy('toggle').check()
-    cy.dataCy('toggle').should('be.checked')
-
-    cy.dataCy('toggle').uncheck()
-    cy.dataCy('toggle').should('not.be.checked')
-  })
-})
+testComponent('QuasarCheckbox', 'checkbox')
+testComponent('QuasarToggle', 'toggle')
 
 describe('QuasarToggle', () => {
   it('can be used with normal Cypress commands', () => {

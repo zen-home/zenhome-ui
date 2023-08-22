@@ -2,7 +2,7 @@
   <q-date v-model="date" data-cy="date-picker" />
 
   <div>
-    <q-input v-model="date" label="Scegli data">
+    <q-input v-model="date" label="Scegli data" data-cy="date-input-field">
       <template #append>
         <q-btn
           data-cy="open-date-picker-popup-button"

@@ -8,6 +8,7 @@
           round
           :icon="mdiMenu"
           aria-label="Menu"
+          data-cy="toggle-drawer-button"
           @click="toggleLeftDrawer"
         />
 
@@ -23,6 +24,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      data-cy="drawer"
     >
       <q-list tag="ul">
         <q-item>
@@ -42,7 +44,12 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <Suspense>
+        <router-view />
+        <template #fallback>
+          <div>Loading...</div>
+        </template>
+      </Suspense>
     </q-page-container>
   </q-layout>
 </template>

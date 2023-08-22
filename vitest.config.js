@@ -2,9 +2,16 @@ import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import jsconfigPaths from 'vite-jsconfig-paths'
+import fs from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    https: {
+      key: fs.readFileSync('./key.pem'),
+      cert: fs.readFileSync('./cert.pem')
+    }
+  },
   test: {
     environment: 'happy-dom',
     setupFiles: 'test/vitest/setup-file.js',
@@ -16,12 +23,8 @@ export default defineConfig({
     ]
   },
   plugins: [
-    vue({
-      template: { transformAssetUrls }
-    }),
-    quasar({
-      sassVariables: 'src/quasar-variables.scss'
-    }),
+    vue({ template: { transformAssetUrls } }),
+    quasar({ sassVariables: 'src/quasar-variables.scss' }),
     jsconfigPaths()
   ]
 })

@@ -30,4 +30,13 @@ describe('QuasarDate', () => {
     // add a data-cy on the dialog/popup-proxy containing the QDate and use the `withinDialog` extended signature:
     // Example: cy.withinDialog({ dataCy: 'date-picker-popup', fn: () => { cy.get('.q-date').selectDate(targetDate); } })
   })
+
+  it('should reflect selected date in the input field', () => {
+    cy.mount(QuasarDate)
+
+    cy.dataCy('date-picker').selectDate(targetDate)
+
+    // Assuming you have a data-cy attribute or another selector for the input field
+    cy.get('[data-cy="date-input-field"]').should('have.value', targetDate)
+  })
 })
