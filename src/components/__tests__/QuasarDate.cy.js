@@ -39,4 +39,12 @@ describe('QuasarDate', () => {
     // Assuming you have a data-cy attribute or another selector for the input field
     cy.get('[data-cy="date-input-field"]').should('have.value', targetDate)
   })
+
+  it('should update date when typing into the input field', () => {
+    cy.mount(QuasarDate)
+
+    const typedDate = '2023/04/15'
+    cy.get('[data-cy="date-input-field"]').type(typedDate)
+    cy.dataCy('date-value').should('have.text', typedDate)
+  })
 })

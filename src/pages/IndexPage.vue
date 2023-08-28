@@ -1,26 +1,35 @@
 <template>
   <q-page class="flex flex-center">
-    {{ users }}
+    <div class="column">
+      <div class="flex flex-center q-mb-md">
+        <quasar-button @test="handleTest" />
+      </div>
+      <pre><code>{{ users }}</code></pre>
+    </div>
   </q-page>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+import QuasarButton from 'src/components/QuasarButton.vue'
 
-export default {
-  async setup () {
-    const stuff = await fetch('/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query: 'query Users { users { name id } }'
-      })
-    }).then(response => response.json())
+const users = ref(null)
 
-    console.log(stuff)
-
-    return {
-      users: stuff
-    }
-  }
+const handleTest = () => {
+  console.log('Test event emitted!')
 }
+
+const fetchData = async () => {
+  const response = await fetch('/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: 'query Users { users { name id } }'
+    })
+  })
+  const data = await response.json()
+  users.value = data
+}
+
+fetchData()
 </script>

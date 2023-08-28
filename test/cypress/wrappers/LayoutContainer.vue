@@ -1,6 +1,8 @@
 <template>
   <q-layout>
-    <component :is="component" v-bind="$attrs" />
+    <q-page-container>
+      <component :is="component" v-bind="$attrs" />
+    </q-page-container>
   </q-layout>
 </template>
 
