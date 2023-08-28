@@ -1,0 +1,32 @@
+{
+  "source": {
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "node_modules",
+      "coverage",
+      "dist",
+      "cypress",
+      "mock",
+      "test"
+    ],
+    "includePattern": ".+\\.js(doc|x)?$|.+\\.vue$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "docs/",
+    "recurse": true,
+    "readme": "README.md",
+    "template": "node_modules/clean-jsdoc-theme"
+  },
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc"
+    ]
+  },
+  "plugins": [
+    "jsdoc-vuejs"
+  ]
+}
