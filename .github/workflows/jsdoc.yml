@@ -1,0 +1,27 @@
+name: Generate JSDoc and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Replace with your default branch if not 'main'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build JSDoc
+      uses: andstor/jsdoc-action@v1
+      with:
+        source_dir: ./src  # Replace with your source directory
+        output_dir: ./out  # Output directory for generated docs
+        config_file: jsdoc.json  # Replace with your JSDoc config file if you have one
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./out
