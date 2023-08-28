@@ -13,15 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install jsdoc-vuejs
+      run: npm install jsdoc-vuejs clean-jsdoc-theme
+
     - name: Build JSDoc
       uses: andstor/jsdoc-action@v1
       with:
-        source_dir: ./src  # Replace with your source directory
-        output_dir: ./out  # Output directory for generated docs
-        config_file: jsdoc.json  # Replace with your JSDoc config file if you have one
+        source_dir: ./src
+        output_dir: ./docs
+        config_file: jsdoc.json
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out
+        publish_dir: ./docs
