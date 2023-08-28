@@ -13,8 +13,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install jsdoc-vuejs
-      run: npm install jsdoc-vuejs clean-jsdoc-theme
+    - name: Install deps
+      run: npm ci
 
     - name: Build JSDoc
       uses: andstor/jsdoc-action@v1
