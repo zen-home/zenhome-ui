@@ -51,3 +51,5 @@ coverage/
 
 .scannerwork
 sonar-project.properties
+
+/docs/
