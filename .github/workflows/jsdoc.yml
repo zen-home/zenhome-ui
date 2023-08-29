@@ -13,15 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install deps
-      run: npm ci
+    - name: Install dependencies
+      run: npm install jsdoc jsdoc-vuejs clean-jsdoc-theme
 
     - name: Build JSDoc
-      uses: andstor/jsdoc-action@v1
-      with:
-        source_dir: ./src
-        output_dir: ./docs
-        config_file: jsdoc.json
+      run: npx jsdoc -c jsdoc.json
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
