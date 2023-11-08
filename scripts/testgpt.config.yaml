@@ -1,4 +1,5 @@
 .js:
+  model: gpt-4-1106-preview
   techs:
     - vitest
   promptTemplate: |
