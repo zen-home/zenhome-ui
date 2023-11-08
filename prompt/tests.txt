@@ -1,0 +1,132 @@
+### Unit Test Code Prompt for Expert Programmers
+
+Your task is to write unit tests for the provided functions or classes. Please adhere to the following guidelines:
+
+#### Guidelines:
+
+**Restrictions**: NEVER use any jest or jasmine specific syntax.
+**Testing Libraries**: Use either `vitest` or `Cypress` for your unit tests.
+**Import Syntax**: Use ES6 `import` syntax, not `require`.
+**Test Documentation**: Add comments to your test cases to explain what they do.
+**Avoid jest** Do not use jest. Use `vitest` or `Cypress` instead. Most jest.* functions have a `vi.*` or `cy.*` equivalent. See vitest Library information below.
+**Style**: Use standardjs style for your code.
+
+
+#### vitest Library information
+declare class vi {
+    useFakeTimers(config?: FakeTimerInstallOpts): this;
+    useRealTimers(): this;
+    runOnlyPendingTimers(): this;
+    runAllTimers(): this;
+    runAllTicks(): this;
+    advanceTimersByTime(ms: number): this;
+    advanceTimersToNextTimer(): this;
+    getTimerCount(): number;
+    setSystemTime(time: number | string | Date): this;
+    getMockedSystemTime(): string | number | Date | null;
+    getRealSystemTime(): number;
+    clearAllTimers(): this;
+    spyOn: typeof spyOn;
+    fn: typeof fn;
+    mock(path: string, factory?: () => any): void;
+    unmock(path: string): void;
+    doMock(path: string, factory?: () => any): void;
+    doUnmock(path: string): void;
+    /**
+     * Imports module, bypassing all checks if it should be mocked.
+     * Can be useful if you want to mock module partially.
+     * @example
+     * vi.mock('./example', async () => {
+     *  const axios = await vi.importActual('./example')
+     *
+     *  return { ...axios, get: vi.fn() }
+     * })
+     * @param path Path to the module. Can be aliased, if your config supports it
+     * @returns Actual module without spies
+     */
+    importActual<T>(path: string): Promise<T>;
+    /**
+     * Imports a module with all of its properties and nested properties mocked.
+     * For the rules applied, see docs.
+     * @param path Path to the module. Can be aliased, if your config supports it
+     * @returns Fully mocked module
+     */
+    importMock<T>(path: string): Promise<MaybeMockedDeep<T>>;
+    mocked<T>(item: T, deep?: false): MaybeMocked<T>;
+    mocked<T>(item: T, deep: true): MaybeMockedDeep<T>;
+    isMockFunction(fn: any): fn is EnhancedSpy;
+    clearAllMocks(): this;
+    resetAllMocks(): this;
+    restoreAllMocks(): this;
+    /**
+     * Will put a value on global scope. Useful, if you are
+     * using jsdom/happy-dom and want to mock global variables, like
+     * `IntersectionObserver`.
+     */
+    stubGlobal(name: string | symbol | number, value: any): this;
+    resetModules(): this;
+    /**
+     * Wait for all imports to load.
+     * Useful, if you have a synchronous call that starts
+     * importing a module, that you cannot wait otherwise.
+     */
+    dynamicImportSettled(): Promise<void>;
+}
+
+#### Example Structure for General Functions:
+
+// Import the functions or classes you're going to test
+import { describe, expect, it, vi } from 'vitest';
+import { installQuasar } from '@quasar/quasar-app-extension-testing-unit-vitest';
+import { yourFunction } from 'your-module';
+
+// Define and reuse mock data or variable references for your test cases
+const mockData = {...};
+
+describe('Your Test Suite Title', () => {
+
+  // If there's any setup code, put it here
+  beforeAll(() => {
+    // Setup code
+  });
+
+  it('Your Test Case Title', () => {
+    // Your test code
+  });
+
+  // Add more test cases as needed
+});
+
+
+#### Example Structure for Vue Components:
+
+// Import the Vue component you're going to test
+import YourComponent from 'path/to/YourComponent.vue';
+
+// Import necessary utilities
+import { describe, expect, it, vi } from 'vitest';
+import { installQuasar } from '@quasar/quasar-app-extension-testing-unit-vitest';
+import { mount } from '@vue/test-utils';
+
+describe('Your Vue Component Test Suite', () => {
+
+  // Optional: Quasar setup
+  beforeAll(() => {
+    installQuasar();
+  });
+
+  // Mount the component
+  const wrapper = mount(YourComponent, {
+    // props, data, etc.
+  });
+
+  it('renders a Vue instance', () => {
+    expect(wrapper.isVueInstance()).toBe(true);
+  });
+
+  // Add more test cases specific to the Vue component
+});
+
+#### Goal:
+
+Your goal is to provide comprehensive and accurate unit tests that cover all possible scenarios. Ensure that the functions or classes operate as intended.

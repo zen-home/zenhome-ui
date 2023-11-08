@@ -6,6 +6,7 @@
   "author": "James harrington <jamesdonaldharrington@gmail.com>",
   "private": true,
   "scripts": {
+    "eslint": "eslint",
     "lint": "eslint --ext .js,.vue ./src ./mock ./test/* ./*.js",
     "test": "npm run test:unit:ci && npm run test:component:ci && npm run test:e2e:ci",
     "dev": "concurrently -p \"[{name}]\" -n \"MOCK,QUASAR\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev:mock-gql\" \"quasar dev\"",
@@ -26,7 +27,9 @@
     "start-sonar": "docker-compose up -d sonarqube",
     "static-code-analysis": "chmod 775 ./scripts/* &&  ./scripts/sonar-scanner.sh",
     "docs:gen": "jsdoc -c jsdoc.json",
-    "docs:serve": "npx serve docs"
+    "docs:serve": "npx serve docs",
+    "gpt": "huskygpt review -e .js,.vue",
+    "testgpt": "chmod 775 ./scripts/* && node ./scripts/testgpt-prompt.js"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -77,11 +80,14 @@
     "happy-dom": "^9.20.3",
     "http-proxy": "^1.18.1",
     "husky": "^8.0.0",
+    "inquirer": "^9.2.11",
     "jest-sonar-reporter": "^2.0.0",
+    "js-yaml": "^4.1.0",
     "jsdoc": "^4.0.2",
     "jsdoc-vuejs": "^4.0.0",
     "localtunnel": "^2.0.2",
     "nodemon": "^3.0.0",
+    "ora": "^7.0.1",
     "playwright-webkit": "^1.35.1",
     "postcss": "^8.4.14",
     "sass": "1.32.12",

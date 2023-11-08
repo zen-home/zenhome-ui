@@ -53,3 +53,7 @@ coverage/
 sonar-project.properties
 
 /docs/
+
+# review
+.huskygpt_review.md
+.env.local

@@ -44,4 +44,7 @@
     "editor.defaultFormatter": "1nVitr0.blocksort"
   },
   "livePreview.defaultPreviewPath": "/docs/index.html",
+  "[html]": {
+    "editor.defaultFormatter": "1nVitr0.blocksort"
+  },
 }
