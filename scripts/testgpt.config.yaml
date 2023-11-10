@@ -1,0 +1,65 @@
+.js:
+  model: gpt-4-1106-preview
+  techs:
+    - vitest
+  promptTemplate: |
+    Please provide vitest unit tests for the file {fileName} using {techs}
+    {instructions}.
+
+    Please begin your response with \`\`\` and end it with \`\`\` directly.
+
+    Here is the file content:
+    \`\`\`{content}\`\`\`
+  examples:
+    - fileName: errors.js
+      code: |
+        export const zenError = (error, config = {}) => {
+          if (config.debug) {
+            console.error(error)
+          }
+        }
+      tests: |
+        import { zenError } from './src/utils/error.js'
+        import { describe, it, expect, vi } from 'vitest'
+
+        describe('zenError', () => {
+          it('should console.error when debug is true', () => {
+            console.error = vi.fn() // Mock console.error
+            const error = new Error('This is a test error')
+            const config = { debug: true }
+
+            zenError(error, config)
+
+            expect(console.error).toHaveBeenCalledWith(error)
+          })
+
+          it('should not console.error when debug is false', () => {
+            console.error = vi.fn() // Mock console.error
+            const error = new Error('This is a test error')
+            const config = { debug: false }
+
+            zenError(error, config)
+
+            expect(console.error).not.toHaveBeenCalled()
+          })
+
+          it('should not console.error when debug is undefined', () => {
+            console.error = vi.fn() // Mock console.error
+            const error = new Error('This is a test error')
+
+            zenError(error)
+
+            expect(console.error).not.toHaveBeenCalled()
+          })
+        })
+    - fileName: sum.js
+      code: |
+        export const sum = (a, b) => {
+          return a + b;
+        }
+      tests: |
+        import { test, expect } from "vitest";
+
+        test("add 2 numbers", () => {
+          expect(sum(2,3)).toEqual(5);
+        });
