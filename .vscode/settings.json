@@ -47,4 +47,7 @@
   "[html]": {
     "editor.defaultFormatter": "1nVitr0.blocksort"
   },
+  "cSpell.words": [
+    "zenhome"
+  ],
 }

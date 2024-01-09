@@ -1,8 +1,11 @@
 const https = require('https')
 const fs = require('fs')
 const express = require('express')
-const { ApolloServer, gql } = require('apollo-server-express')
+const { ApolloServer } = require('@apollo/server')
+const { expressMiddleware } = require('@apollo/server/express4')
+const cors = require('cors')
 const { schemaComposer } = require('graphql-compose')
+const gql = require('graphql-tag')
 const httpProxy = require('http-proxy')
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
@@ -134,6 +137,7 @@ const handlePostRequest = (req, res, body) => {
       proxy.web(req, res, { target })
     }
   } else {
+    console.log('Forwarding request to upstream URL:', target)
     // If the body is empty or doesn't contain a valid JSON object, forward the request to the upstream URL
     proxy.web(req, res, { target })
   }
@@ -146,47 +150,43 @@ try {
 }
 
 const schema = schemaComposer.buildSchema()
+const app = express()
 
+const httpsServer = https.createServer({ key, cert }, app).listen({ port: 8000 }, () =>
+  console.log('🎭️ 🚀 Mock Server ready at https://localhost:8000/graphql')
+)
+console.log(httpsServer.on)
 const server = new ApolloServer({
   schema,
   introspection: true, // Enable introspection to get the schema
   playground: true // Enable the playground to test your queries
 })
 
-const app = express()
+// Start the server before applying middleware
+server.start().then(() => {
+  app.use(express.json(), cors())
 
-const startServer = () => {
-  // Start the server before applying middleware
-  server.start().then(() => {
-    server.applyMiddleware({ app })
+  app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => ({ token: req.headers.token })
+  }))
 
-    app.use((req, res, next) => {
-      if (req.method === 'POST') {
-        // If the request is a POST request, parse it to get the GraphQL query or mutation
-        let body = ''
-        req.on('data', (chunk) => {
-          body += chunk.toString()
-        })
-        req.on('end', () => {
-          handlePostRequest(req, res, body)
-        })
-      } else {
-        next()
-      }
-    })
-
-    https.createServer({ key, cert }, app).listen({ port: 8000 }, () =>
-      console.log(`🎭️ 🚀 Mock Server ready at https://localhost:8000${server.graphqlPath}`)
-    )
+  app.use((req, res, next) => {
+    if (req.method === 'POST') {
+      // If the request is a POST request, parse it to get the GraphQL query or mutation
+      let body = ''
+      req.on('data', (chunk) => {
+        body += chunk.toString()
+      })
+      req.on('end', () => {
+        handlePostRequest(req, res, body)
+      })
+    } else {
+      next()
+    }
   })
-}
+})
 
-if (!module.parent) {
-  console.log('Starting server')
-  startServer()
-}
-
-module.exports = { server, handlePostRequest, startServer, app }
+module.exports = { server, handlePostRequest, app }
 
 // example
 

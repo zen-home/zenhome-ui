@@ -1,4 +1,4 @@
-import { zenError } from './src/utils/error.js'
+import { zenError } from 'src/utils/error.js'
 import { describe, it, expect, vi } from 'vitest'
 
 describe('zenError', () => {
@@ -29,7 +29,7 @@ describe('zenError', () => {
     const error = new Error('Test error')
     const config = {
       send: true,
-      to: 'test@example.com',
+      to: 'fake@example.com',
       subject: 'Error',
       text: error.message,
       html: error.stack
@@ -38,7 +38,7 @@ describe('zenError', () => {
     zenError(error, config)
 
     expect(window.send).toHaveBeenCalledWith({
-      to: 'test@example.com',
+      to: 'fake@example.com',
       subject: 'Error',
       text: error.message,
       html: error.stack

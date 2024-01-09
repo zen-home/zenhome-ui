@@ -8,8 +8,8 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
-const { configure } = require('quasar/wrappers')
-const path = require('path')
+import { configure } from 'quasar/wrappers'
+import path from 'path'
 const testEnv = process.env.NODE_ENV === 'test'
 
 module.exports = configure(function (/* ctx */) {
@@ -84,7 +84,6 @@ module.exports = configure(function (/* ctx */) {
 
       vitePlugins: [
         [
-          '@intlify/vite-plugin-vue-i18n',
           {
             // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
             // compositionOnly: false,
@@ -105,8 +104,7 @@ module.exports = configure(function (/* ctx */) {
         '/graphql': {
           target: 'https://localhost:8000',
           changeOrigin: true,
-          secure: false,
-          pathRewrite: { '^/graphql': '/' }
+          secure: false
         }
       }
     },

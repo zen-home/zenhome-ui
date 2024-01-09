@@ -5,7 +5,7 @@ module.exports = {
   root: true,
 
   parserOptions: {
-    ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2021 // Allows for the parsing of modern ECMAScript features
   },
 
   env: {
@@ -35,6 +35,7 @@ module.exports = {
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
     'vue',
+    'vitest',
     'cypress'
   ],
 
@@ -82,8 +83,8 @@ module.exports = {
       extends: [
         // Add Cypress-specific lint rules, globals and Cypress plugin
         // See https://github.com/cypress-io/eslint-plugin-cypress#rules
-        'plugin:cypress/recommended',
-      ],
-    },
+        'plugin:cypress/recommended'
+      ]
+    }
   ]
 }

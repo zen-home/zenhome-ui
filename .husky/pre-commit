@@ -32,12 +32,3 @@ fi
 #     exit 1
 #   fi
 # fi
-
-echo "${GREEN}Running lint${NC}"
-npm run lint
-echo "${GREEN}Running unit tests${NC}"
-npm run test:unit:ci
-echo "${GREEN}Running e2e tests${NC}"
-npm run build
-echo "${GREEN}Running lighthouse preformance and a11y test${NC}"
-npm run lhci

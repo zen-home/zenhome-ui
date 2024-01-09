@@ -43,11 +43,10 @@ yarn-error.log*
 
 .nyc_output
 coverage/
+coverage-*/
+
 .todo
 .lighthouseci
-
-.nyc_output
-coverage/
 
 .scannerwork
 sonar-project.properties

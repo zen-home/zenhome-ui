@@ -6,7 +6,7 @@ export const zenError = (error, config = {}) => {
   if (config.send) {
     // fake module
     window.send({
-      to: 'test@example.com',
+      to: 'fake@example.com',
       subject: 'Error',
       text: error.message,
       html: error.stack
