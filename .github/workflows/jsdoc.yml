@@ -20,7 +20,7 @@ jobs:
         node-version: 20
 
     - name: Install dependencies
-      run: npm install --no-frozen-lockfile
+      run: npm install
 
     - name: Build JSDoc
       run: npm run docs:gen
