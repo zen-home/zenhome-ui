@@ -1,8 +1,8 @@
 module.exports = {
   ci: {
     collect: {
-      url: ['http://localhost:2345/'],
-      startServerCommand: 'npx @quasar/cli serve -p 2345 dist/spa'
+      url: ['http://localhost:2340/'],
+      startServerCommand: 'npx @quasar/cli serve -p 2340 dist/spa'
     },
     assert: {
       assertions: {
