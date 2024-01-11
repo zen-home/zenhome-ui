@@ -33,7 +33,11 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: npm install --no-frozen-lockfile
+        run: npm install
+
+      - name: Save cache key
+        id: cache-keys
+        run: echo "::set-output name=key::${{ steps.cache-modules.outputs.key }}"
 
   Lint:
     needs: setup
