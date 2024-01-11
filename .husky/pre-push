@@ -10,8 +10,12 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
-npm run build
+echo "${GREEN}Running component tests${NC}"
 npm run test:component:ci && npm run test:e2e:ci
+echo "${GREEN}Running e2e tests${NC}"
+npm run build
+echo "${GREEN}Running lighthouse preformance and a11y test${NC}"
+npm run lhci
 
 # check coverage coverage/coverage-summary.json
 linePercent=$(node -pe "JSON.parse(require('fs').readFileSync('coverage/coverage-summary.json', 'utf8')).total.lines.pct")
