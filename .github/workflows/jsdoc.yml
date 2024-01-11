@@ -3,7 +3,7 @@ name: Generate JSDoc and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Replace with your default branch if not 'main'
+      - main
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       run: npm install --no-frozen-lockfile
 
     - name: Build JSDoc
-      run: npm docs:gen
+      run: npm run docs:gen
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

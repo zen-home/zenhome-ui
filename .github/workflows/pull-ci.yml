@@ -24,11 +24,14 @@ jobs:
       - name: Install dependencies
         run: npm install --no-frozen-lockfile
 
-      - name: Lint validation
-        run: npm lint
+      - name: Lint
+        run: npm run lint
 
-      - name: Run Unit Tests
-        run: npm run test:unit:ci
+      - name: Test
+        run: npm run test
 
       - name: Build
-        run: npm build
+        run: npm run build
+
+      - name: Lighthouse
+        run: npm run lhci
