@@ -5,7 +5,7 @@ module.exports = {
   root: true,
 
   parserOptions: {
-    ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2021 // Allows for the parsing of modern ECMAScript features
   },
 
   env: {
@@ -53,7 +53,6 @@ module.exports = {
 
   // add your custom rules here
   rules: {
-
     // allow async-await
     'generator-star-spacing': 'off',
     // allow paren-less arrow functions
@@ -78,12 +77,21 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.cy.{js,jsx,ts,tsx}'],
+      files: ['test/cypress/**/*.{js,jsx,ts,tsx}', '**/*.cy.{js,jsx,ts,tsx}'],
       extends: [
         // Add Cypress-specific lint rules, globals and Cypress plugin
         // See https://github.com/cypress-io/eslint-plugin-cypress#rules
-        'plugin:cypress/recommended',
-      ],
+        'plugin:cypress/recommended'
+      ]
     },
+    {
+      files: [
+        'src/**/*.vitest.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+        'test/vitest/__tests__/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      ],
+      rules: {
+        'import/named': 'off' // disable the rule for test files
+      }
+    }
   ]
 }

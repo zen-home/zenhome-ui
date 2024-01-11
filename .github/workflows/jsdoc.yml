@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Replace with your default branch if not 'main'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -13,11 +14,34 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 20
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        run_install: false
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v3
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
     - name: Install dependencies
-      run: npm install jsdoc jsdoc-vuejs clean-jsdoc-theme
+      run: pnpm install --no-frozen-lockfile
 
     - name: Build JSDoc
-      run: npx jsdoc -c jsdoc.json
+      run: pnpm docs:gen
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
