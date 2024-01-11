@@ -1,4 +1,4 @@
-import { zenError } from './src/utils/error.js'
+import { zenError } from 'src/utils/error.js'
 import { describe, it, expect, vi } from 'vitest'
 
 describe('zenError', () => {
