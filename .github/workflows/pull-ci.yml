@@ -20,6 +20,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Cache node modules
         uses: actions/cache@v2
         with:
@@ -79,6 +85,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Cache node modules
         uses: actions/cache@v2
         with:
@@ -99,6 +111,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
 
       - name: Cache node modules
         uses: actions/cache@v2
