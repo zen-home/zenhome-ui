@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue .",
     "test": "npm run test:unit:ci && npm run test:component:ci && npm run test:e2e:ci",
+    "start": "npm run dev",
     "dev": "concurrently -p \"[{name}]\" -n \"MOCK,QUASAR\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev:mock-gql\" \"quasar dev\"",
     "dev:mock-gql": "nodemon -w mock mock/graphql/server.js -q",
     "build": "quasar build",

@@ -6,6 +6,10 @@ import fs from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    // enable hydration mismatch details in production build
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true
+  },
   server: {
     https: {
       key: fs.readFileSync('./key.pem'),
