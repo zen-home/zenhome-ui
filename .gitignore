@@ -1,55 +1,36 @@
 .DS_Store
-.thumbs.db
-node_modules
-
-# Quasar core related directories
+.env.local
+.env.local*
+.huskygpt_review.md
+.idea
+.lighthouseci
+.nyc_output
+.nyc_output
+.nyc_output
+.nyc_output
 .quasar
+.scannerwork
+.thumbs.db
+.todo
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
 /dist
+/docs/
 /quasar.config.*.temporary.compiled*
-
-# Cordova related directories and files
+/src-capacitor/node_modules
+/src-capacitor/www
 /src-cordova/node_modules
 /src-cordova/platforms
 /src-cordova/plugins
 /src-cordova/www
-
-# Capacitor related directories and files
-/src-capacitor/www
-/src-capacitor/node_modules
-
-# Log files
-npm-debug.log*
-
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
-# local .env files
-.env.local*
-
-
-.nyc_output
-coverage/
-.todo
-.lighthouseci
-
-.nyc_output
-coverage/
-
-.scannerwork
-sonar-project.properties
-
-/docs/
-
-# review
-.huskygpt_review.md
-.env.local
-
-.nyc_output
 coverage*
-
-.nyc_output
 coverage/
+coverage/
+coverage/
+licenses.json
+node_modules
+npm-debug.log*
+snyk-test.json
+sonar-project.properties
