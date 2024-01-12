@@ -29,7 +29,8 @@ module.exports = configure(ctx => ({
   // --> boot files are part of "main.js"
   // https://v2.quasar.dev/quasar-cli/boot-files
   boot: [
-    'i18n'
+    'i18n',
+    'error-setup'
   ],
 
   // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -126,8 +127,8 @@ module.exports = configure(ctx => ({
 
   // https://v2.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
   ssr: {
-  // ssrPwaHtmlFilename: 'offline.html', // do NOT use index.html as name!
-  // will mess up SSR
+    // ssrPwaHtmlFilename: 'offline.html', // do NOT use index.html as name!
+    // will mess up SSR
 
     // extendSSRWebserverConf (esbuildConf) {},
     // extendPackageJson (json) {},
@@ -171,8 +172,8 @@ module.exports = configure(ctx => ({
 
   // Full list of options: https://v2.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
   electron: {
-  // extendElectronMainConf (esbuildConf)
-  // extendElectronPreloadConf (esbuildConf)
+    // extendElectronMainConf (esbuildConf)
+    // extendElectronPreloadConf (esbuildConf)
 
     // specify the debugging port to use for the Electron app when running in development mode
     inspectPort: 5858,
@@ -180,7 +181,7 @@ module.exports = configure(ctx => ({
     bundler: 'packager', // 'packager' or 'builder'
 
     packager: {
-    // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
+      // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
 
       // OS X / Mac App Store
       // appBundleId: '',
@@ -193,7 +194,7 @@ module.exports = configure(ctx => ({
     },
 
     builder: {
-    // https://www.electron.build/configuration/configuration
+      // https://www.electron.build/configuration/configuration
 
       appId: 'zenhome'
     }

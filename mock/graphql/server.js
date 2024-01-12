@@ -155,7 +155,7 @@ const server = new ApolloServer({
 
 const app = express()
 
-const startServer = () => {
+const startServer = (port = 8000) => {
   // Start the server before applying middleware
   server.start().then(() => {
     server.applyMiddleware({ app })
@@ -175,7 +175,7 @@ const startServer = () => {
       }
     })
 
-    https.createServer({ key, cert }, app).listen({ port: 8000 }, () =>
+    https.createServer({ key, cert }, app).listen({ port }, () =>
       console.log(`🎭️ 🚀 Mock Server ready at https://localhost:8000${server.graphqlPath}`)
     )
   })
