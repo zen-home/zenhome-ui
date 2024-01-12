@@ -1,7 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-import { zenError } from 'src/utils/error'
+import { ZCatch } from 'src/utils/z-catch'
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation
@@ -35,6 +35,6 @@ export default route(function () {
 
     return Router
   } catch {
-    zenError('Failed to create router')
+    ZCatch('Failed to create router')
   }
 })

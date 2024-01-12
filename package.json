@@ -6,14 +6,16 @@
   "author": "James harrington <jamesdonaldharrington@gmail.com>",
   "private": true,
   "scripts": {
+    "eslint": "eslint",
     "lint": "eslint --fix --ext .js,.vue .",
     "test": "npm run test:unit:ci && npm run test:component:ci && npm run test:e2e:ci",
     "start": "npm run dev",
     "dev": "concurrently -p \"[{name}]\" -n \"MOCK,QUASAR\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev:mock-gql\" \"quasar dev\"",
     "dev:mock-gql": "nodemon -w mock mock/graphql/server.js -q",
     "build": "quasar build",
-    "test:unit": "vitest",
-    "test:unit:ci": "vitest run",
+    "test:unit": "vitest --coverage",
+    "test:unit:ui": "vitest --ui --coverage",
+    "test:unit:ci": "vitest run --coverage",
     "test:component": "cross-env NODE_ENV=test cypress open --component --env ENV=test",
     "test:component:ci": "cross-env NODE_ENV=test cypress run --component --env ENV=test",
     "test:e2e": "cross-env NODE_ENV=test start-test \"quasar dev\" http-get://localhost:2340 \"cypress open --e2e\"",
@@ -42,6 +44,7 @@
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^0.34.6",
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@commitlint/cli": "^18.4.3",
