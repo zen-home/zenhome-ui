@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+/* eslint-disable no-console */
 const { exec, execSync } = require('child_process')
 const fs = require('fs')
 const yaml = require('js-yaml')

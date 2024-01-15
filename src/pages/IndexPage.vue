@@ -16,6 +16,7 @@ import QuasarButton from 'src/components/QuasarButton.vue'
 const users = ref(null)
 
 const handleTest = () => {
+  // eslint-disable-next-line no-console
   console.log('Test event emitted!')
 }
 

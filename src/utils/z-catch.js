@@ -17,7 +17,6 @@ export class ZCatch {
    * @param {Object} [config] - Additional configuration for the `zError` instance.
    */
   constructor (input, config) {
-    console.log('ZCatch config', config)
     if (!(input instanceof ZError)) {
       // defaults to LOG transport if none is provided
       if (!config || !config.transports) {
@@ -30,7 +29,6 @@ export class ZCatch {
       this.error = input
     }
 
-    console.log('ZCatch error', this.error)
     // Ensure that transports are processed if they are available
     if (ZCatch.transports && ZCatch.transports.length) {
       ZCatch.transports.forEach(transport => {
@@ -50,7 +48,6 @@ export class ZCatch {
    * @static
    */
   static addTransport (transport) {
-    console.log('ZCatch.addTransport', transport)
     if (typeof transport === 'function') { transport = transport() }
     if (!transport.transportType) throw new Error('Transport must have a transportType property eg: ZError.transports.LOG')
 
