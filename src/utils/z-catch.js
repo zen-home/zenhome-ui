@@ -17,12 +17,26 @@ export class ZCatch {
    * @param {Object} [config] - Additional configuration for the `zError` instance.
    */
   constructor (input, config) {
-    this.error = new ZError(input, config)
+    console.log('ZCatch config', config)
+    if (!(input instanceof ZError)) {
+      // defaults to LOG transport if none is provided
+      if (!config || !config.transports) {
+        config = config || {}
+        config.transports = [ZCatch.defaultTransport]
+      }
+      this.error = new ZError(input, config)
+    } else {
+      if (!input.transports) input.transports = ZCatch.defaultTransport
+      this.error = input
+    }
 
+    console.log('ZCatch error', this.error)
     // Ensure that transports are processed if they are available
     if (ZCatch.transports && ZCatch.transports.length) {
       ZCatch.transports.forEach(transport => {
         if (!transport || !transport.fn) return
+        // only call the transport function if the error.transportType prop matches the transport.transportType prop
+        if (!this.error.transports.includes(transport.transportType) && !this.error.transports.includes('All')) return
         transport.fn(this.error)
       })
     }
@@ -36,15 +50,18 @@ export class ZCatch {
    * @static
    */
   static addTransport (transport) {
-    if (typeof transport === 'function') {
-      ZCatch.transports.push(transport())
-    } else {
-      ZCatch.transports.push(transport)
-    }
+    console.log('ZCatch.addTransport', transport)
+    if (typeof transport === 'function') { transport = transport() }
+    if (!transport.transportType) throw new Error('Transport must have a transportType property eg: ZError.transports.LOG')
+
+    ZCatch.transports.push(transport)
   }
 
-  // Other methods (serialize, sanitize, etc.) go here...
+  static setDefaultTransport (transport) {
+    ZCatch.defaultTransport = transport
+  }
 }
 
 // Initialize the static transports array
 ZCatch.transports = []
+ZCatch.defaultTransport = ZError.transports.LOG

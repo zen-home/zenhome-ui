@@ -6,9 +6,10 @@ describe('ZCatch', () => {
   let originalTransportFn
 
   beforeEach(() => {
+    ZCatch.setDefaultTransport(ZError.transports.LOG)
     ZCatch.transports = []
     originalTransportFn = vi.fn()
-    ZCatch.addTransport(() => ({ fn: originalTransportFn, transport: ZError.transports.LOG }))
+    ZCatch.addTransport(() => ({ fn: originalTransportFn, transportType: ZError.transports.LOG }))
   })
 
   it('should create ZError on instantiation', () => {
@@ -20,7 +21,7 @@ describe('ZCatch', () => {
 
   it('should gracefully skip transports that are missing', () => {
     ZCatch.addTransport({
-      transport: ZError.transports.LOG
+      transportType: ZError.transports.LOG
     })
     const input = new Error('Test error')
     // eslint-disable-next-line no-new
@@ -30,7 +31,7 @@ describe('ZCatch', () => {
   })
 
   it('should call registered transports with ZError', () => {
-    const input = new Error('Test error')
+    const input = new ZError('Test error')
     // eslint-disable-next-line no-new
     new ZCatch(input)
 
@@ -51,7 +52,7 @@ describe('ZCatch', () => {
 
   it('should process multiple transports', () => {
     const secondFn = vi.fn()
-    ZCatch.addTransport(() => ({ fn: secondFn, transport: ZError.transports.LOG }))
+    ZCatch.addTransport(() => ({ fn: secondFn, transportType: ZError.transports.LOG }))
 
     const input = new Error('Test error')
     // eslint-disable-next-line no-new
@@ -59,5 +60,17 @@ describe('ZCatch', () => {
 
     expect(originalTransportFn).toHaveBeenCalledTimes(1)
     expect(secondFn).toHaveBeenCalledTimes(1)
+  })
+  it('should setDefaultTransport', () => {
+    const input = new Error('Test error')
+    const transportSpy = vi.fn()
+    ZCatch.setDefaultTransport(ZError.transports.REDIRECT)
+
+    ZCatch.addTransport(() => ({ fn: transportSpy, transportType: ZError.transports.REDIRECT }))
+
+    // eslint-disable-next-line no-new
+    new ZCatch(input)
+
+    expect(transportSpy).toHaveBeenCalledTimes(1)
   })
 })

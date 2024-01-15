@@ -25,8 +25,8 @@ describe('ZError', () => {
     expect(zError.level).toBe(ZError.level.ERROR)
     expect(zError.importance).toBe(ZError.importance.LOW)
     expect(zError.href).toBe(window.location.href)
-    expect(zError.userId).toBe('Unknown user')
-    expect(zError.friendlyMessage).toBe('An error occurred')
+    expect(zError.userId).toBe(undefined)
+    expect(zError.friendlyMessage).toBe(undefined)
   })
 
   it('should work without window.location', () => {
@@ -35,7 +35,7 @@ describe('ZError', () => {
     delete global.window
 
     const zError = new ZError('Default properties test')
-    expect(zError.href).toBe('Unknown location')
+    expect(zError.href).toBe(undefined)
 
     // Restore the original window object after the test
     global.window = originalWindow

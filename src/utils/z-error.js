@@ -24,9 +24,9 @@ export class ZError extends Error {
    * @param {string} [config.stack] - Stack trace of the error.
    * @param {string} [config.title] - A title for the error, useful for displaying error information in UIs.
    * @param {string} [config.body] - A detailed error body or description.
-   * @param {string} [config.href='Unknown location'] - URL where the error occurred. In a browser environment, defaults to the current window's location.
-   * @param {string} [config.userId='Unknown user'] - Identifier for the user experiencing the error.
-   * @param {string} [config.friendlyMessage='An error occurred'] - A user-friendly error message.
+   * @param {string} [config.href] - URL where the error occurred. In a browser environment, defaults to the current window's location.
+   * @param {string} [config.userId] - Identifier for the user experiencing the error.
+   * @param {string} [config.friendlyMessage] - A user-friendly error message.
    *
    * @throws {TypeError} Throws a TypeError if the config parameter is not an object.
    *
@@ -77,11 +77,11 @@ export class ZError extends Error {
     if (typeof window !== 'undefined' && window.location) {
       this.href = config.href || window.location.href
     } else {
-      this.href = config.href || 'Unknown location'
+      this.href = config.href
     }
 
-    this.userId = config.userId || 'Unknown user'
-    this.friendlyMessage = config.friendlyMessage || config.message || 'An error occurred'
+    this.userId = config.userId
+    this.friendlyMessage = config.friendlyMessage || config.message
 
     return this
   }

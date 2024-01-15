@@ -19,7 +19,7 @@ describe('error-setup boot file', () => {
     expect(ZCatch.addTransport).toHaveBeenCalledOnce()
 
     const transportConfig = ZCatch.addTransport.mock.calls[0][0]()
-    expect(transportConfig.transport).toBe(ZError.transports.LOG)
+    expect(transportConfig.transportType).toBe(ZError.transports.LOG)
 
     // Create a fake error to test the transport function
     const error = new Error('Test error')
