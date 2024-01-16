@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+/* eslint-disable no-console */
 const { exec, execSync } = require('child_process')
 const fs = require('fs')
 const yaml = require('js-yaml')
@@ -112,7 +113,7 @@ async function main () {
       const fileContents = fs.readFileSync(oldPath, 'utf8')
       let newFileContents = fileContents
         .replace(/jest\./g, 'vi.')
-        .replace(/```javascript/g, '')
+        .replace(/```.+/g, '')
         .replace(/```/g, '')
       if (!newFileContents.includes(' vi ') && newFileContents.includes('vi.')) {
         newFileContents = "import { vi } from 'vitest' \n" + newFileContents

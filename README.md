@@ -1,3 +1,5 @@
+[![Full Test Suite](https://github.com/zen-home/zen-ui/actions/workflows/pull-ci.yml/badge.svg)](https://github.com/zen-home/zen-ui/actions/workflows/pull-ci.yml)
+
 # Installation
 ###  Install the dependencies
 ```bash
