@@ -93,6 +93,7 @@
     "playwright-webkit": "^1.40.1",
     "postcss": "^8.4.33",
     "sass": "^1.69.7",
+    "semantic-release": "^23.0.0",
     "snyk": "^1.1269.0",
     "standard-version": "^9.5.0",
     "supertest": "^6.3.3",
