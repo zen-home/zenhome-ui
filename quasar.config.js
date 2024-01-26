@@ -8,8 +8,8 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
-const { configure } = require('quasar/wrappers')
-const path = require('path')
+import { configure } from 'quasar/wrappers'
+import path from 'path'
 const testEnv = process.env.NODE_ENV === 'test'
 
 module.exports = configure(ctx => ({
@@ -65,7 +65,6 @@ module.exports = configure(ctx => ({
 
     vitePlugins: [
       [
-        '@intlify/vite-plugin-vue-i18n',
         {
           // you need to set i18n resource including paths !
           include: path.resolve(__dirname, './src/i18n/**')

@@ -1,12 +1,8 @@
-import { describe, expect, it, beforeEach } from 'vitest'
+import { describe, expect, it } from 'vitest'
 const request = require('supertest')
 const { app, startServer } = require('../../../mock/graphql/server')
-
+startServer()
 describe('Server and handlePostRequest tests', () => {
-  beforeEach(() => {
-    startServer(8800)
-  })
-
   it('should handle valid POST request', async () => {
     const query = {
       query: `query Users {
