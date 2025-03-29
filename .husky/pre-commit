@@ -1,38 +1,44 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
+# Branch validation
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-if [ "$branch" = "main" ]; then
-  echo "${RED}You can't commit directly to main branch${NC}"
-  exit 1
-fi
-if [ "$branch" = "dev" ]; then
-  echo "${RED}You can't commit directly to dev branch. Please create a feature, bug or hotfix branch then make a PR${NC}"
+# Protected branches
+if [ "$branch" = "main" ] || [ "$branch" = "dev" ]; then
+  echo "${RED}Direct commits to ${branch} branch are not allowed${NC}"
+  echo "Please create a feature branch and make a PR instead"
   exit 1
 fi
 
-valid_branch_regex='^((fix|feat|release)\/(\.|[a-zA-Z0-9\-])+)$'
-message="There is something wrong with your branch name. Branch names in this project must adhere to this contract: $valid_branch_regex. Your commit will be rejected. You should rename your branch to a valid name and try again."
-echo "$branch"
-echo "$valid_branch_regex"
+# Branch naming convention
+valid_branch_regex='^((fix|feat|release|chore|hotfix|refactor|style|docs|perf|test|build|ci|revert|wip)\/(\.|[a-zA-Z0-9\-])+)$'
 if [[ ! $branch =~ $valid_branch_regex ]]; then
-    echo "$message"
+    echo "${RED}Invalid branch name${NC}"
+    echo "Branch names must follow: type/name"
+    echo "Types: fix, feat, release, chore, hotfix, refactor, style, docs, perf, test, build, ci, revert, wip"
+    echo "Example: feat/user-auth"
     exit 1
 fi
 
-# # Check if this is a versioning commit
-# if git log -1 --pretty=%B | grep -q "release"; then
-#   if [[ ! $branch =~ ^release\/ ]]; then
-#     echo "${RED}You can't create a new version outside a release branch${NC}"
-#     exit 1
-#   fi
-# fi
+# Commit message validation
+commit_msg=$(git log -1 --pretty=%B)
 
+# Conventional Commits pattern
+conventional_commit_regex='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z-]+\))?: .{1,}$'
+if ! echo "$commit_msg" | grep -qE "$conventional_commit_regex"; then
+    echo "${RED}Invalid commit message${NC}"
+    echo "Format: type(scope): description"
+    echo "Example: feat(auth): add login functionality"
+    exit 1
+fi
+
+# Run checks
 echo "${GREEN}Running lint${NC}"
 npm run lint
 echo "${GREEN}Running unit tests${NC}"

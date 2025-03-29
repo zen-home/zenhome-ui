@@ -23,7 +23,7 @@ describe('ZCatch', () => {
       transport: ZError.transports.LOG
     })
     const input = new Error('Test error')
-    // eslint-disable-next-line no-new
+     
     new ZCatch(input)
 
     expect(originalTransportFn).toHaveBeenCalledTimes(1)
@@ -31,7 +31,7 @@ describe('ZCatch', () => {
 
   it('should call registered transports with ZError', () => {
     const input = new Error('Test error')
-    // eslint-disable-next-line no-new
+     
     new ZCatch(input)
 
     expect(originalTransportFn).toHaveBeenCalledTimes(1)
@@ -42,8 +42,7 @@ describe('ZCatch', () => {
     ZCatch.transports = []
     const input = new Error('Test error')
     const transportSpy = vi.fn()
-
-    // eslint-disable-next-line no-new
+     
     new ZCatch(input)
 
     expect(transportSpy).not.toHaveBeenCalled()
@@ -54,7 +53,7 @@ describe('ZCatch', () => {
     ZCatch.addTransport(() => ({ fn: secondFn, transport: ZError.transports.LOG }))
 
     const input = new Error('Test error')
-    // eslint-disable-next-line no-new
+     
     new ZCatch(input)
 
     expect(originalTransportFn).toHaveBeenCalledTimes(1)

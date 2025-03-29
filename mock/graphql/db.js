@@ -1,9 +1,13 @@
 // to setup a forin key relationship between the data the key MUST BE <collection>_id
 
-const users = require('./db-users')
-const posts = require('./db-posts')
-const comments = require('./db-comments')
+import users from './db-users.js'
+import posts from './db-posts.js'
+import comments from './db-comments.js'
 
-const data = { posts, users, comments }
+const data = {
+  users,
+  posts,
+  comments
+}
 
-module.exports = { ...data }
+export default data

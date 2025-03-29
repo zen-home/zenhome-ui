@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { describe, it, expect, vi } from 'vitest'
 import { ZCatch } from 'src/utils/z-catch'
 import { ZError } from 'src/utils/z-error'

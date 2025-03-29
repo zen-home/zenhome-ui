@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { boot } from 'quasar/wrappers'
 import { ZCatch } from 'src/utils/z-catch'
 import { ZError } from 'src/utils/z-error'

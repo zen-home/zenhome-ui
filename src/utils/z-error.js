@@ -65,7 +65,6 @@ export class ZError extends Error {
     this.body = config.body
     this.level = config.level || 'Error'
     this.importance = config.importance || 'Low'
-    console.log(config.transports)
     this.transports = config.transports || [ZError.transports.LOG]
 
     // Only use captureStackTrace if it's available (Node.js specific)

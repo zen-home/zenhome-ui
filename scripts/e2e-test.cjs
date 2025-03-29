@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fetch = require('node-fetch')
 const { exec } = require('child_process')
 
