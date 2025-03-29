@@ -11,6 +11,7 @@
 import { configure } from 'quasar/wrappers'
 import path from 'path'
 import { fileURLToPath } from 'url'
+// import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,13 +26,6 @@ export default configure(ctx => ({
     warnings: true,
     errors: true
   },
-
-  // https://v2.quasar.dev/quasar-cli/prefetch-feature
-  // preFetch: true,
-
-  // app boot file (/src/boot)
-  // --> boot files are part of "main.js"
-  // https://v2.quasar.dev/quasar-cli/boot-files
   boot: [
     'i18n',
     'error-setup'
@@ -69,7 +63,7 @@ export default configure(ctx => ({
 
     vitePlugins: [
       [
-        '@intlify/vite-plugin-vue-i18n',
+        '@intlify/unplugin-vue-i18n/vite',
         {
           // you need to set i18n resource including paths !
           include: path.resolve(__dirname, './src/i18n/**')

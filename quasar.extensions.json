@@ -1,13 +1,3 @@
 {
-  "@quasar/testing-e2e-cypress": {
-    "port": "2340",
-    "options": [
-      "code-coverage"
-    ]
-  },
-  "@quasar/testing-unit-vitest": {
-    "options": [
-      "ui"
-    ]
-  }
+  
 }

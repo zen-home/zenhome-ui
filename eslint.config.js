@@ -104,7 +104,7 @@ export default [
   },
 
   {
-    files: ['test/cypress/**/*.{js,jsx,ts,tsx}', '**/*.cy.{js,jsx,ts,tsx}'],
+    files: ['cypress/**/*.{js,jsx,ts,tsx}', '**/*.cy.{js,jsx,ts,tsx}'],
     plugins: {
       cypress
     },
@@ -147,7 +147,9 @@ export default [
         afterAll: 'readonly',
         afterEach: 'readonly',
         window: 'readonly',
-        global: 'readonly'
+        global: 'readonly',
+        Cypress: 'readonly',
+        cy: 'readonly'
       }
     },
     rules: {
