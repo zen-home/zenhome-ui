@@ -1,20 +1,29 @@
-const https = require('https')
-const fs = require('fs')
-const express = require('express')
-const { ApolloServer, gql } = require('apollo-server-express')
-const { schemaComposer } = require('graphql-compose')
-const httpProxy = require('http-proxy')
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
+/* eslint-disable no-console */
+import https from 'https'
+import fs from 'fs'
+import express from 'express'
+import { ApolloServer, gql } from 'apollo-server-express'
+import { schemaComposer } from 'graphql-compose'
+import httpProxy from 'http-proxy'
+import yargs from 'yargs/yargs'
+import { hideBin } from 'yargs/helpers'
+
+import db from './db.js'
+
 
 const key = fs.readFileSync('./key.pem')
 const cert = fs.readFileSync('./cert.pem')
 
-// Import the database
-const db = require('./db')
-
 // Parse command-line arguments
-const argv = yargs(hideBin(process.argv)).argv
+const argv = yargs(hideBin(process.argv))
+  .option('port', {
+    alias: 'p',
+    type: 'number',
+    description: 'Port to run the server on',
+    default: 4000
+  })
+  .help()
+  .argv
 
 // Create a proxy server
 const proxy = httpProxy.createProxyServer()
@@ -124,7 +133,7 @@ const handlePostRequest = (req, res, body) => {
     const { query } = JSON.parse(body)
 
     // Check if the query or mutation is in the schema
-    // eslint-disable-next-line no-undef
+     
     const document = gql`${query}`
     const operationName = document.definitions[0].name.value
     const canHandleRequest = !!schema.getQueryType().getFields()[operationName]
@@ -181,12 +190,12 @@ const startServer = (port = 8000) => {
   })
 }
 
-if (!module.parent) {
-  console.log('Starting server')
+// Check if this file is being run directly
+if (import.meta.url === `file://${process.argv[1]}`) {
   startServer()
 }
 
-module.exports = { server, handlePostRequest, startServer, app }
+export { server, handlePostRequest, startServer, app }
 
 // example
 

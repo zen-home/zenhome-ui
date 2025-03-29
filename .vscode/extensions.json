@@ -4,7 +4,8 @@
     "editorconfig.editorconfig",
     "vue.volar",
     "wayou.vscode-todo-highlight",
-    "sonarsource.sonarlint-vscode"
+    "sonarsource.sonarlint-vscode",
+    "ryanluker.vscode-coverage-gutters"
   ],
   "unwantedRecommendations": [
     "octref.vetur",

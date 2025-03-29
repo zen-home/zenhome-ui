@@ -1,9 +1,7 @@
-import { installQuasarPlugin } from '@quasar/quasar-app-extension-testing-unit-vitest'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import ExampleComponent from './demo/ExampleComponent.vue'
-
-installQuasarPlugin()
+import { globalPlugins } from './setup'
 
 describe('example Component', () => {
   it('should mount component with todos', () => {
@@ -15,6 +13,9 @@ describe('example Component', () => {
           { id: 1, content: 'Hallo' },
           { id: 2, content: 'Hoi' }
         ]
+      },
+      global: {
+        plugins: globalPlugins
       }
     })
     expect(wrapper.vm.clickCount).toBe(0)
@@ -27,6 +28,9 @@ describe('example Component', () => {
       props: {
         title: 'Hello',
         totalCount: 4
+      },
+      global: {
+        plugins: globalPlugins
       }
     })
     expect(wrapper.findAll('.q-item')).toHaveLength(0)
