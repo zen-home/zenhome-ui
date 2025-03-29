@@ -21,15 +21,21 @@ const handleTest = () => {
 }
 
 const fetchData = async () => {
-  const response = await fetch('/graphql', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      query: 'query Users { users { name id } }'
+  try {
+    const response = await fetch('/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: 'query Users { users { name id } }'
+      })
     })
-  })
-  const data = await response.json()
-  users.value = data
+    const data = await response.json()
+    users.value = data
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error fetching users:', error)
+    users.value = { error: 'Failed to fetch users' }
+  }
 }
 
 fetchData()

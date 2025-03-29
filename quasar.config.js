@@ -10,11 +10,8 @@
 
 import { configure } from 'quasar/wrappers'
 import path from 'path'
-import { fileURLToPath } from 'url'
-// import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 const testEnv = process.env.NODE_ENV === 'test'
 
 export default configure(ctx => ({
@@ -62,13 +59,10 @@ export default configure(ctx => ({
     },
 
     vitePlugins: [
-      [
-        '@intlify/unplugin-vue-i18n/vite',
-        {
-          // you need to set i18n resource including paths !
-          include: path.resolve(__dirname, './src/i18n/**')
-        }
-      ]
+      VueI18nPlugin({
+        include: path.resolve(__dirname, './src/i18n/**'),
+        runtimeOnly: true
+      })
     ]
   },
 

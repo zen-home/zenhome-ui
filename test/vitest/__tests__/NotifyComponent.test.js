@@ -1,26 +1,8 @@
 import { mount } from '@vue/test-utils'
-import { Quasar, Notify } from 'quasar'
 import { describe, expect, it, vi } from 'vitest'
+import { Notify } from 'quasar'
 import NotifyComponent from './demo/NotifyComponent.vue'
-
-// Create a custom Quasar plugin with Notify
-const quasarPlugin = {
-  install(app) {
-    app.use(Quasar, {
-      plugins: {
-        Notify
-      },
-      config: {
-        brand: {
-          primary: '#1976D2',
-          secondary: '#26A69A',
-          accent: '#9C27B0',
-          dark: '#1d1d1d'
-        }
-      }
-    })
-  }
-}
+import { globalPlugins } from './setup'
 
 describe('notify example', () => {
   it('should call notify on click', async () => {
@@ -28,7 +10,7 @@ describe('notify example', () => {
 
     const wrapper = mount(NotifyComponent, {
       global: {
-        plugins: [quasarPlugin]
+        plugins: globalPlugins
       }
     })
     const spy = vi.spyOn(Notify, 'create')

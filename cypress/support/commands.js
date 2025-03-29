@@ -23,4 +23,12 @@
 // Custom command for data-cy attribute
 Cypress.Commands.add('dataCy', (value) => {
   return cy.get(`[data-cy="${value}"]`)
+})
+
+// Custom command to wait for i18n to be ready
+Cypress.Commands.add('waitForI18n', () => {
+  // Wait for the navigation title to be visible and contain translated text
+  cy.get('[data-cy="nav-title"]', { timeout: 10000 })
+    .should('be.visible')
+    .and('contain', 'Zen Home App')
 }) 

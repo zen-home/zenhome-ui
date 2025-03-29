@@ -12,8 +12,8 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          {{  $t('nav.title') }}
+        <q-toolbar-title data-cy="nav-title">
+          {{ t('nav.title') }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -30,8 +30,9 @@
         <q-item>
           <q-item-label
             header
+            data-cy="essential-links"
           >
-            {{ $t('nav.essentialLinks') }}
+            {{ t('nav.essentialLinks') }}
           </q-item-label>
         </q-item>
 
@@ -54,8 +55,9 @@
   </q-layout>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import EssentialLink from 'components/EssentialLink.vue'
 import {
   mdiMenu,
@@ -68,7 +70,10 @@ import {
   mdiStar
 } from '@quasar/extras/mdi-v7'
 
-const linksList = [
+const { t } = useI18n()
+const leftDrawerOpen = ref(false)
+
+const essentialLinks = [
   {
     title: 'Docs',
     caption: 'quasar.dev',
@@ -112,23 +117,8 @@ const linksList = [
     link: 'https://awesome.quasar.dev'
   }
 ]
-export default defineComponent({
-  name: 'MainLayout',
 
-  components: {
-    EssentialLink
-  },
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      mdiMenu,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 </script>
